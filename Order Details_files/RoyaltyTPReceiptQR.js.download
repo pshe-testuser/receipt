@@ -1,0 +1,175 @@
+﻿
+
+$(document).ready(function () {
+    bindData();
+});
+
+function bindData() {
+    let url = window.location.href.split('?')[1];
+    url = decryption(url) + '&State=1&pageno=1&pagesize=10';
+    console.log(url);
+    if (url) {
+
+        $.ajax({
+            type: "get",
+            url: mineralBaseurlApi + '/mineral-mapping/etp_report/get-eTP-details-report?' + url,
+            data: '',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            processdata: true,
+            beforeSend: function () { },
+            success: function (json) {
+                if (json.statusCode === "200" && json.responseData.responseData1.length) {
+                    let jsonObj = json.responseData.responseData1[0]
+                    console.log(jsonObj);
+                    bindHTMLContent(jsonObj)
+                } else {
+                }
+            },
+            error: function () {
+            }
+        });
+    }
+}
+
+
+function bindHTMLContent(obj) {
+    let html = '';
+    html += ` <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                            <p class=" mb-0 mr-2">eTP No. : <span class="font-weight-bold">${checkEmptyText(obj.invoiceNo) ? obj.invoiceNo : '-'}</span></p>
+                            <p class=" mb-0 mr-2">eTP Date : <span class="font-weight-bold">${checkEmptyText(obj.validityFrom) ? obj.validityFrom : '-'}</span></p>
+                            <p class=" mb-0">Vehicle No. : <span class="font-weight-bold">${checkEmptyText(obj.vehical) ? obj.vehical : '-'}</span></p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card mb-3 shadow-none border">
+                                    <div class="card-header font-weight-bold text-primary bg-light border-bottom-0">
+                                        eTP  Information
+                                    </div>
+                                    <div class="card-body py-1">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">eTP No.</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.invoiceNo) ? obj.invoiceNo : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Mineral</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.material) ? obj.material : '-'}</p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="mb-0 ">Destination	</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.destination) ? obj.destination : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Distance	</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.distance) ? (obj.distance + 'km') : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Quantity	</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.quantity) ? (obj.quantity + 'Brass') : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">eTP Date	</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.validityFrom) ? obj.validityFrom : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Validity Upto	</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.validityUpto) ? obj.validityUpto : '-'}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="card mb-3 shadow-none border">
+                                    <div class="card-header font-weight-bold text-primary bg-light border-bottom-0">
+                                        Plot  Lessee/Licence Information
+                                    </div>
+                                    <div class="card-body py-1">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Lessee/Licence</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.ownerName) ? obj.ownerName : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Plot Name</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.plotname) ? obj.plotname : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">District</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.district) ? obj.district : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Taluka</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.taluka) ? obj.taluka : '-'}</p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="mb-0 ">Plot Address</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.plotaddress) ? obj.plotaddress : '-'}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card mb-2 shadow-none border">
+                                    <div class="card-header font-weight-bold text-primary bg-light border-bottom-0">
+                                        Vehicle Information
+                                    </div>
+                                    <div class="card-body py-1">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Vehicle No.</p>
+                                                <p class="mb-2 font-weight-bold"> ${checkEmptyText(obj.vehical) ? obj.vehical : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Vehicle Type.</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.vehTypeName) ? obj.vehTypeName : '-'}</p>
+                                            </div>                                            
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Driver Name</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.driverName) ? obj.driverName : '-'}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-0 ">Driver Mob No.</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.driverMobNo) ? obj.driverMobNo : '-' }</p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="mb-0 ">Owner Name</p>
+                                                <p class="mb-2 font-weight-bold">${checkEmptyText(obj.vehicalOwner) ? obj.vehicalOwner : '-'}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
+    $('#receiptData').html(html);
+}
+
+function checkEmptyText(data) {
+    let val;
+    data = $.trim(data);
+    if (data == null || data == undefined || data == "" || data == "null" || data == "undefined" || data == 'string' || data == "0001-01-01T00:00:00" || data == '1900-01-01T00:00:00') {
+        val = false;
+    } else {
+        val = true;
+    }
+    return val;
+}
+
+function encryption(val) {
+    var key = CryptoJS.enc.Utf8.parse('8080808080808080');
+    var iv = CryptoJS.enc.Utf8.parse('8080808080808080');
+    var encryptedVal = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(val), key, { keySize: 256 / 8, iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+    return encryptedVal.toString();
+}
+
+function decryption(val) {
+    var key = CryptoJS.enc.Utf8.parse('8080808080808080');
+    var iv = CryptoJS.enc.Utf8.parse('8080808080808080');
+    var decryptedVal = CryptoJS.AES.decrypt(val, key, { keySize: 256 / 8, iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }).toString(CryptoJS.enc.Utf8);
+    return decryptedVal.toString();
+}
+

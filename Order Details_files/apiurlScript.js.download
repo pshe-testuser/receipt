@@ -1,0 +1,44 @@
+﻿//var masterBaseurlApi = 'http://awsmaster.mahamining.com';
+//var mineralBaseurlApi = 'http://awsapi.mahamining.com';
+//var accountingBaseurlApi = 'http://awsaccounting-api.mahamining.com';
+//var domainName = "";
+//var uploadPath = "D:\\Stpl\\CP\\STPLminingGitHub\\MahaminingWeb\\Uploads\\";
+
+
+//var masterBaseurlApi = 'http://awsmaster.mahamining.com';
+//var mineralBaseurlApi = 'http://awsapi.mahamining.com';
+//var accountingBaseurlApi = 'http://awsaccounting-api.mahamining.com';
+//var domainName = "http:\\demo.mahamining.com";
+//var uploadPath = "C:\\inetpub\\vhosts\\mahamining.com\\demo.mahamining.com\\Uploads\\";
+
+//var masterBaseurlApi = 'http://gcc-master.mahamining.com';
+//var mineralBaseurlApi = 'http://gcc-api.mahamining.com';
+//var accountingBaseurlApi = 'http://gcc-accounting-api.mahamining.com'
+//var domainName = "http:\\demo-gcc.mahamining.com";
+//var uploadPath = "E:\\Uploads\\";
+
+//var masterBaseurlApi = 'http://staging-master.mahamining.com';
+//var mineralBaseurlApi = 'http://staging-api.mahamining.com';
+//var accountingBaseurlApi = 'http://staging-accounting-api.mahamining.com'
+//var domainName = "http:\\staging-mahakhanij.mahamining.com";
+//var uploadPath = "C:\\Apps\\demo-gcc.mahamining.com\\Uploads\\";
+
+var masterBaseurlApi = 'https://mahakhanij.maharashtra.gov.in';
+var mineralBaseurlApi = 'https://mahakhanij.maharashtra.gov.in';
+var accountingBaseurlApi = 'https://mahakhanij.maharashtra.gov.in'
+var domainName = "https://mahakhanij.maharashtra.gov.in";
+//var uploadPath = "E:\\Uploads\\";
+//var uploadPath = "\\\\Stpl-esds-app-y\\e\\Uploads\\";  \\STPL-ESDS-APP-X\
+//var uploadPath = "\\\\STPL-ESDS-APP-X\\Uploads\\";  // OLD-Before 24/02/2023
+var uploadPath = "\\\\10.9.228.226\\Uploads\\";   // 24/02/2023
+
+var imageUrlPath = "https://mahakhanij.maharashtra.gov.in";
+//For  Mahakhanij-Live Purpose
+var vehicleTrackingBaseUrlApi = 'https://mahakhanij.maharashtra.gov.in'
+var stplVtsTrackingBaseUrlAPI = 'https://mahakhanij.maharashtra.gov.in'
+
+var projectBaseurlApi = 'https://mahakhanij.maharashtra.gov.in'
+var vtsLoginUrl = 'https://mahakhanij.maharashtra.gov.in/mahatrack/login'; // VTS Login URL 15-02-2022
+var Gras_CIN_url = "https://gras.mahakosh.gov.in/echallan/challan/models";
+googleMapKey = "https://maps.google.com/maps/api/js?key=AIzaSyAQTP0ZG7gzSqo6TEB0TsXpmO1lCr5bcMo&libraries=drawing,places,geometry&callback=initMap"; // Old Live Key - AIzaSyBCSDtf8g7XZ9B-P20ZqzOIr1TUQAg4Fj0
+var droneSurveyPath = "https://mahakhanij.maharashtra.gov.in";
